@@ -1,0 +1,53 @@
+<aiml version="1.0.1" encoding="UTF-8">
+   
+    <category>
+        <pattern>Sunday</pattern>
+        <template>
+        sunday is a day between saturday and monday
+        </template>
+    </category>
+
+    <category>
+        <pattern>Monday</pattern>
+        <template>
+        monday is a day between sunday and tuesday
+        </template>
+    </category>
+    
+    <category>
+        <pattern>Tuesday</pattern>
+        <template>
+        Tuesday is a day between Monday and Wednesday
+        </template>
+    </category>
+    
+      <category>
+        <pattern>Wednesday</pattern>
+        <template>
+        Wednesday is a day between Tuesday and thursday
+        </template>
+    </category>
+
+    <category>
+        <pattern>Thursday</pattern>
+        <template>
+        thursday is a day between wednesday and friday
+        </template>
+    </category>
+    
+    <category>
+        <pattern>Friday</pattern>
+        <template>
+        friday is a day between thursday and saturday
+        </template>
+    </category>
+    
+      <category>
+        <pattern>saturday</pattern>
+        <template>
+        saturday is a day between friday and sunday
+        </template>
+    </category>
+    
+    
+</aiml>
