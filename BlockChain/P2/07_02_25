@@ -1,0 +1,39 @@
+pragma solidity ^0.8.0;
+
+contract StructDemo {
+
+struct Person {
+
+string name;
+
+uint age; www
+
+address walletAddress;
+
+}
+
+Person[] public persons;
+
+mapping(address => Person) public personByAddress;
+
+function addPerson(string memory_name, uint_age) public {
+
+Person memory newPerson = Person(_name, _age, msg.sender); ww www
+
+persons.push(newPerson);
+
+personByAddress[msg.sender] = newPerson;
+
+}
+
+function getPerson(address_walletAddress) public view returns (string memory, uint,
+
+address) {
+
+Person memory person = personByAddress walletAddress];
+
+return (person.name, person.age, person.walletAddress);
+
+}
+
+}
