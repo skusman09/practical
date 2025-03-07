@@ -1,0 +1,164 @@
+pragma solidity ^0.8.20;
+
+contract FallbackExample {
+    event Received(address sender, uint amount);
+    event FallbackTriggered(address sender, uint amount, bytes data);
+
+    fallback() external payable {
+        emit FallbackTriggered(msg.sender, msg.value, msg.data);
+    }
+
+    receive() external payable {
+        emit Received(msg.sender, msg.value);
+    }
+
+    function getBalance() public view returns (uint) {
+        return address(this).balance;
+    }
+}
+
+
+
+
+
+
+pragma solidity ^0.8.20;
+
+contract ViewFunctionsExample {
+    uint private number;
+    address private owner;
+    string private message;
+
+    constructor(uint _number, string memory _message) {
+        number = _number;
+        owner = msg.sender; // Fixed typo from 'mse.sender' to 'msg.sender'
+        message = _message;
+    }
+
+    // View function to get the stored number
+    function getNumber() public view returns (uint) {
+        return number;
+    }
+
+    // View function to check contract owner
+    function getOwner() public view returns (address) {
+        return owner;
+    }
+
+    // View function to get the stored message
+    function getMessage() public view returns (string memory) {
+        return message;
+    }
+
+    // View function to check the current block timestamp
+    function getCurrentBlockTimestamp() public view returns (uint) {
+        return block.timestamp;
+    }
+
+    // View function to check the current block number
+    function getCurrentBlockNumber() public view returns (uint) {
+        return block.number;
+    }
+
+    // View function to check contract balance
+    function getContractBalance() public view returns (uint) {
+        return address(this).balance;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+pragma solidity ^0.8.20;
+
+contract FunctionOverloading {
+    event Result(uint value);
+
+    // Function with one parameter
+    function add(uint a) public pure returns (uint) {
+        return a + 10;
+    }
+
+    // Overloaded function with two parameters
+    function add(uint a, uint b) public pure returns (uint) {
+        return a + b;
+    }
+
+    // Overloaded function with different data types
+    function add(uint a, uint b, uint8 c) public pure returns (uint) {
+        return a + b + c;
+    }
+
+    // Example of calling overloaded functions
+    function testOverloading() public pure returns (uint, uint, uint) {
+        uint result1 = add(5);       // Calls add(uint)
+        uint result2 = add(5, 10);   // Calls add(uint, uint)
+        uint result3 = add(5, 10, 2); // Calls add(uint, uint, uint8)
+        return (result1, result2, result3);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+pragma solidity ^0.8.20;
+
+contract MathFunctions {
+    // Addition
+    function add(uint a, uint b) public pure returns (uint) {
+        return a + b;
+    }
+
+    // Subtraction (ensures no underflow)
+    function subtract(uint a, uint b) public pure returns (uint) {
+        require(a >= b, "Underflow error");
+        return a - b;
+    }
+
+    // Multiplication
+    function multiply(uint a, uint b) public pure returns (uint) {
+        return a * b;
+    }
+
+    // Division (ensures no division by zero)
+    function divide(uint a, uint b) public pure returns (uint) {
+        require(b > 0, "Cannot divide by zero");
+        return a / b;
+    }
+
+    // Modulo (remainder)
+    function mod(uint a, uint b) public pure returns (uint) {
+        require(b > 0, "Cannot modulo by zero");
+        return a % b;
+    }
+
+    // Exponentiation (a^b)
+    function power(uint a, uint b) public pure returns (uint) {
+        return a ** b;
+    }
+
+    // Calculates square root using the Babylonian method
+    function sqrt(uint x) public pure returns (uint) {
+        if (x == 0 || x == 1) return x;
+        uint z = (x + 1) / 2;
+        uint y = x;
+        while (z < y) {
+            y = z;
+            z = (x / z + z) / 2;
+        }
+        return y;
+    }
+}

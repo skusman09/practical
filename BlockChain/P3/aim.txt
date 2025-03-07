@@ -1,0 +1,5 @@
+Aim: Implement and Demonstrate the use of following in solidity:
+1. Loops
+2. Decision making
+3. Strings
+4. Arrays

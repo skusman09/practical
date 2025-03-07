@@ -1,0 +1,25 @@
+pragma solidity ^0.8.0;
+
+contract WhileLoopExample {
+    uint[] public evenNumbers;
+
+    function storEvenNumber(uint n) public {
+        delete evenNumbers;
+        uint i = 1;
+        while (i <= n) {
+            evenNumbers.push(i * 2);
+            i++;
+        }
+    }
+
+        function sumFirstNNumber(uint n) public pure returns (uint) {
+        uint sum = 0;
+        uint i = 1;
+        while (i <= n) {
+            sum += 1;
+            i++;
+        }
+        return sum;
+
+        }
+}
