@@ -1,49 +1,56 @@
+"""
+NLP Practical 8 - Corrected Code
+"""
 
-################  8A  ##################
 import nltk
-from nltk import tokenize
+from nltk import tokenize, tag, chunk
+import spacy
+
+# Ensure required NLTK resources are downloaded
 nltk.download('punkt')
-from nltk import tag
-from nltk import chunk
 nltk.download('averaged_perceptron_tagger')
 nltk.download('maxent_ne_chunker')
 nltk.download('words')
-nltk.download('punkt_tab')
-nltk.download('averaged_perceptron_tagger_eng')
-nltk.download('maxent_ne_chunker_tab')
-para = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+
+# ---------------- Section a: Sentence Tokenization, Word Tokenization, POS Tagging & Chunking ----------------
+
+para = "Today you will learn NLTK."
+
+# Sentence Tokenization
 sents = tokenize.sent_tokenize(para)
-print("\nSentence tokenization\n============\n",sents)
-# Word tokenization
-print("\nWord tokenization\n============\n")
-for index in range(len(sents)):
-    words = tokenize.word_tokenize(sents[index])
+print("\nSentence Tokenization:\n", sents)
+
+# Word Tokenization
+print("\nWord Tokenization:")
+for sent in sents:
+    words = tokenize.word_tokenize(sent)
     print(words)
+
 # POS Tagging
-tagged_words = []
-for index in range(len(sents)):
-    tagged_words.append(tag.pos_tag(words))
-print("\nPOS tagging\n============\n",tagged_words)
+tagged_words = [tag.pos_tag(tokenize.word_tokenize(sent)) for sent in sents]
+print("\nPOS Tagging:\n", tagged_words)
+
 # Chunking
-tree = []
-for index in range(len(sents)):
-    tree.append(chunk.ne_chunk(tagged_words[index]))
-print("\nChunking\n============\n",tree)
+tree = [chunk.ne_chunk(tagged) for tagged in tagged_words]
+print("\nChunking:\n", tree)
 
+# ---------------- Section b: Named Entity Recognition using SpaCy ----------------
 
-################  8B  ##################
-import spacy
 nlp = spacy.load("en_core_web_sm")
-text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+text = "We are writing practical."
 doc = nlp(text)
-print("Noun Phrases: ", [chunk.text for chunk in doc.noun_chunks])
-print("Verbs: ", [token.lemma_ for token in doc if token.pos_ == "VERB"])
 
+print("\nNamed Entities:")
+print("Noun Phrases:", [chunk.text for chunk in doc.noun_chunks])
+print("Verbs:", [token.lemma_ for token in doc if token.pos_ == "VERB"])
 
-################  8C  ##################
-import nltk
+# ---------------- Section c: Named Entity Recognition with Diagram (NLTK Treebank) ----------------
+
 nltk.download('treebank')
 from nltk.corpus import treebank_chunk
-treebank_chunk.tagged_sents()[0]
-treebank_chunk.chunked_sents()[0]
-treebank_chunk.chunked_sents()[0].draw()
+
+print("\nFirst tagged sentence from Treebank:", treebank_chunk.tagged_sents()[0])
+print("First chunked sentence from Treebank:", treebank_chunk.chunked_sents()[0])
+
+# Uncomment this line to visualize in a GUI (works in Python IDLE, not Colab)
+# treebank_chunk.chunked_sents()[0].draw()
