@@ -1,6 +1,8 @@
 """### 1a. Simple Client Class that generates the private and public key by
        using built in function in python using RSA algorithm and test it"""
 
+
+!pip install pycryptodome
 import binascii
 from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
