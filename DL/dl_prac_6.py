@@ -10,7 +10,7 @@ def preprocess_image(image_path):
     img = cv2.resize(img, (128, 128))
     img = img.astype('float32') / 255.0
     img = np.expand_dims(img, axis=(0, -1))
-    return img  # This line should be indented at the same level as the rest of the function
+    return img
 
 edge_filter = np.array([[[-1, -1, -1], [-1, 8, -1], [-1, -1, -1]]])
 edge_filter = edge_filter.reshape((3, 3, 1, 1))

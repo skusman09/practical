@@ -1,3 +1,4 @@
+#################   Matrix operations  #####################
 import numpy as np
 print("***Matrix operations***")
 line = "--------"
@@ -22,7 +23,7 @@ print(line)
 m_dot = np.dot(a,b)
 print(m_dot)
 
-
+##################   Tensorflow operations ##########################
 import tensorflow as tf
 print("***Tensorflow operations***")
 line = "--------"

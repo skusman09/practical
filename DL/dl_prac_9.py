@@ -1,21 +1,26 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+
 # Load and convert the image to RGB
 image = cv2.imread('/content/bwimg.webp')
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
 # Flipping operations
 flipped_h = cv2.flip(image, 1) # Horizontal flip
 flipped_v = cv2.flip(image, 0) # Vertical flip
+
 # Rotation: Rotate 90 degrees
 (h, w) = image.shape[:2]
 center = (w // 2, h // 2)
 rotation_matrix = cv2.getRotationMatrix2D(center, 90, 1.0)
 rotated = cv2.warpAffine(image, rotation_matrix, (w, h))
+
 # Translation: Shift by 50 pixels right and 30 pixels down
 tx, ty = 50, 30
 translation_matrix = np.float32([[1, 0, tx], [0, 1, ty]])
 translated = cv2.warpAffine(image, translation_matrix, (w, h))
+
 # Function to display images
 def show_images(images, titles):
  plt.figure(figsize=(12, 8))
@@ -23,16 +28,18 @@ def show_images(images, titles):
     plt.subplot(2, 3, i + 1)
     plt.imshow(img)
     plt.title(title, fontsize=12)
- plt.axis('off')
+    plt.axis('off')
  plt.tight_layout()
  plt.show()
+ 
 # Image list and titles
 images = [image, flipped_h, flipped_v, rotated, translated]
-titles = ["Original Image", "Flipped Horizontally", "Flipped Vertically", "Rotated 90°",
-"Translated"]
+titles = ["Original Image", "Flipped Horizontally", "Flipped Vertically", "Rotated 90°", "Translated"]
+
 # Show the images
 show_images(images, titles)
 
+# Scaling: Resize the image to 1.5 times its original size3
 scaled = cv2.resize(image, None, fx=1.5, fy=1.5, interpolation=cv2.INTER_LINEAR)
 
 # Salt and Pepper Noise: Add random noise

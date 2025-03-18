@@ -10,6 +10,9 @@ print(eigenvalues)
 print("___Eigen Vectors:___")
 print(eigenvectors)
 
+#check for linear dependent and linear independent
+import numpy as np
+Vector_matrix = np.array([[1,2,3],[3,-2,1],[4,-6,5]])
 rank = np.linalg.matrix_rank(Vector_matrix)
 if rank==Vector_matrix.shape[0]:
     print("vectors are linearly independent")
