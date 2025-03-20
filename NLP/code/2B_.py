@@ -1,6 +1,11 @@
 # B. Study Conditional Frequency Distribution
 
 # Frequency Distribution of Modals in News Text
+import nltk
+from nltk.corpus import brown
+brown.words()
+from nltk.corpus import reuters
+reuters.words()
 news_text = brown.words(categories='news')
 fdist = nltk.FreqDist([w.lower() for w in news_text])
 modals = ['can', 'could', 'may', 'might', 'must', 'will']
