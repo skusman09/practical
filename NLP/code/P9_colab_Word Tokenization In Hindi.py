@@ -16,12 +16,14 @@ tokenize(hindi_text, "hi")
 
 !pip install inltk
 
-!pip install tornado==4.5.3 from inltk.inltk import setup setup('hi')
+!pip install tornado==4.5.3 
+
+from inltk.inltk import setup 
+setup('hi')
 
 from inltk.inltk import get_similar_sentences
 
 output = get_similar_sentences('मैं4आज बहुK ख7श हूं:', 5, 'hi')
-
 print(output)
 
 # Identify The Indian Language Of A Text CODE:
@@ -29,6 +31,10 @@ print(output)
 
 !pip install inltk
 
-!pip install tornado==4.5.3 from inltk.inltk import setup setup('gu')
+!pip install tornado==4.5.3 
 
-from inltk.inltk import identify_language identify_language('@tનાL કાL4PCuL')
+from inltk.inltk import setup 
+setup('gu')
+
+from inltk.inltk import identify_language
+identify_language('@tનાL કાL4PCuL')
