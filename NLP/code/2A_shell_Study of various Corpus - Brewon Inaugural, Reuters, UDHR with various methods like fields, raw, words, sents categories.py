@@ -4,7 +4,6 @@
 # Brown Corpus
 import nltk
 from nltk.corpus import brown
-
 brown.categories()
 brown.words()
 brown.words(categories='news')
@@ -17,7 +16,6 @@ brown.sents()
 
 # Reuters Corpus
 from nltk.corpus import reuters
-
 reuters.categories()
 reuters.words()
 reuters.sents()
@@ -29,7 +27,6 @@ print(reuters.words('training/9865')[:3])
 
 # Inaugural Corpus
 from nltk.corpus import inaugural
-
 inaugural.words()
 inaugural.sents()
 inaugural.raw()
@@ -38,7 +35,6 @@ inaugural.fileids()
 
 # UDHR Corpus
 from nltk.corpus import udhr
-
 udhr.words()
 udhr.sents()
 udhr.raw()

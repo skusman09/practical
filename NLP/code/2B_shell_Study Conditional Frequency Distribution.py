@@ -9,9 +9,10 @@ reuters.words()
 news_text = brown.words(categories='news')
 fdist = nltk.FreqDist([w.lower() for w in news_text])
 modals = ['can', 'could', 'may', 'might', 'must', 'will']
-
 for m in modals:
     print(m + ':', fdist[m])
+
+
 
 
 # Conditional Frequency Distribution across Genres
@@ -20,11 +21,12 @@ cfd = nltk.ConditionalFreqDist(
     for genre in brown.categories()
     for word in brown.words(categories=genre)
 )
-
 genres = ['news', 'hobbies', 'science_fiction', 'romance']
 modals = ['can', 'could']
 
 print(cfd.tabulate(conditions=genres, samples=modals))
+
+
 
 # Conditional Frequency Distribution of 'barley' and 'corn' in Reuters Corpus
 cfd = nltk.ConditionalFreqDist(
@@ -34,10 +36,11 @@ cfd = nltk.ConditionalFreqDist(
     for target in ['barley', 'corn']
     if w.lower().startswith(target)
 )
-
 import matplotlib.pyplot as plt
 cfd.plot()
 plt.show()
+
+
 
 # Conditional Frequency Distribution for 'america' and 'citizen' in Inaugural Corpus
 cdf = nltk.ConditionalFreqDist(
@@ -51,6 +54,8 @@ cdf = nltk.ConditionalFreqDist(
 cdf.plot()
 plt.show()
 
+
+
 # Conditional Frequency Distribution for Word Lengths in UDHR Corpus
 languages = ['Chickasaw', 'English', 'German_Deutsch']
 cdf = nltk.ConditionalFreqDist(
@@ -58,6 +63,5 @@ cdf = nltk.ConditionalFreqDist(
     for lang in languages
     for word in udhr.words(lang + '-Latin1')
 )
-
 cdf.plot(cumulative=True)
 plt.show()

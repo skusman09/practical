@@ -2,7 +2,14 @@
 from gtts import gTTS  
 
 # This module is imported so that we can play the converted audio  
-from playsound import playsound  
+from playsound import playsound
+
+"""
+If playsound is not downloading,
+install it according to your specific Python version.
+You can use GPT for guidance.
+This applies to all situations where a package fails to download.
+"""
 
 # It is a text value that we want to convert to audio  
 text_val = 'You are studying Natural Language Processing. Better speak in English'  
